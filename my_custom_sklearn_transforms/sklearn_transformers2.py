@@ -4,21 +4,6 @@ import numpy as np
 import pandas as pd
 
 
-class GetDummies(BaseEstimator, TransformerMixin):
-    def __init__(self, dummy_columns):
-        self.columns = None
-        self.dummy_columns = dummy_columns
-    def fit(self, X, y=None):
-        #self.columns = pandas.get_dummies(X, columns=self.dummy_columns).columns
-        return self
-    def transform(self, X):
-        #X_new = pandas.get_dummies(X)
-        #return X_new.reindex(columns=self.columns, fill_value=0)
-        return self
-
-
-
-
 # Un transformador para remover columnas indeseadas
 class Transform_data(BaseEstimator, TransformerMixin):
     def __init__(self, dummies_transformar,PAYMENT_TERM_transformer,LOAN_AMOUNT_transformer,CHECKING_BALANCE_transformer,EXISTING_SAVINGS_transformer,AGE_transformer,EMPLOYMENT_DURATION_transformer):
