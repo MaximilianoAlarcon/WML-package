@@ -1,4 +1,5 @@
 from sklearn.base import BaseEstimator, TransformerMixin
+import pandas as pd
 
 class GetDummies(BaseEstimator, TransformerMixin):
     def __init__(self, dummy_columns):
