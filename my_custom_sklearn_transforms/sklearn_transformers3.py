@@ -9,9 +9,11 @@ class GetDummies(BaseEstimator, TransformerMixin):
         self.dummy_columns = dummy_columns
 
     def fit(self, X, y=None):
+    	import pandas as pd
         self.columns = pd.get_dummies(X, columns=self.dummy_columns).columns
         return self
 
     def transform(self, X):
+    	import pandas as pd
         X_new = pd.get_dummies(X, columns=self.dummy_columns)
         return X_new.reindex(columns=self.columns, fill_value=0)
