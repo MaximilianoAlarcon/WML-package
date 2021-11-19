@@ -1,16 +1,13 @@
 from setuptools import setup
 
 
-try:
-    # for pip >= 10
-    from pip._internal.req import parse_requirements
-except ImportError:
-    # for pip <= 9.0.3
-    from pip.req import parse_requirements
-
-def load_requirements(fname):
-    reqs = parse_requirements(fname, session="test")
-    return [str(ir.req) for ir in reqs]
+import os
+thelibFolder = os.path.dirname(os.path.realpath(__file__))
+requirementPath = thelibFolder + '/requirements.txt'
+install_requires = [] # Here we'll get: ["gunicorn", "docutils>=0.3", "lxml==0.5a7"]
+if os.path.isfile(requirementPath):
+    with open(requirementPath) as f:
+        install_requires = f.read().splitlines()
 
 setup(
       name='my_custom_sklearn_transforms',
@@ -21,7 +18,7 @@ setup(
       ''',
       url='https://github.com/MaximilianoAlarcon/WML-package/',
       author='Vanderlei Munhoz',
-      install_requires=load_requirements("requirements.txt"),
+      install_requires=install_requires,
       author_email='vnderlev@protonmail.ch',
       license='BSD',
       packages=[
