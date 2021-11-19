@@ -8,12 +8,16 @@ class GetDummies(BaseEstimator, TransformerMixin):
         self.columns = None
         self.dummy_columns = dummy_columns
 
+    def fit_(self, X):
+    	return pd.get_dummies(X, columns=self.dummy_columns).columns
+
     def fit(self, X, y=None):
-    	import pandas as pd
-        self.columns = pd.get_dummies(X, columns=self.dummy_columns).columns
+        self.columns = self.fit_(X)
         return self
 
+    def transform_(self, X):
+    	return pd.get_dummies(X, columns=self.dummy_columns)
+
     def transform(self, X):
-    	import pandas as pd
-        X_new = pd.get_dummies(X, columns=self.dummy_columns)
+        X_new = transform_(X)
         return X_new.reindex(columns=self.columns, fill_value=0)
