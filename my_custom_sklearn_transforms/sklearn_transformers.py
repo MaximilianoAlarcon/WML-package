@@ -1,6 +1,6 @@
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.pipeline import Pipeline
-
+import numpy as np
 
 # Un transformador para remover columnas indeseadas
 class DropColumns(BaseEstimator, TransformerMixin):
