@@ -1,4 +1,9 @@
 from sklearn.base import BaseEstimator, TransformerMixin
+
+import sys
+old_syspath = sys.path
+sys.path = [path for path in sys.path if 'customspace' not in path]
+
 import pandas as pd
 
 class GetDummies(BaseEstimator, TransformerMixin):
