@@ -28,7 +28,7 @@ class Transform_data(BaseEstimator, TransformerMixin):
         self.EMPLOYMENT_DURATION_transformer = EMPLOYMENT_DURATION_transformer
 
         
-    def powertransformer(dataframe,col,transformers):
+    def powertransformer(self,dataframe,col,transformers):
         c = dataframe[col].copy()
         c = np.array(c).reshape(-1,1)
         c = transformers["1"].transform(c)
@@ -37,7 +37,7 @@ class Transform_data(BaseEstimator, TransformerMixin):
         c = np.float32(c)
         dataframe[col] = c
         
-    def powertransformer_sqrt(dataframe,col,transformers):
+    def powertransformer_sqrt(self,dataframe,col,transformers):
         c = dataframe[col].copy()
         c = np.sqrt(c)
         c = np.array(c).reshape(-1,1)
@@ -47,7 +47,7 @@ class Transform_data(BaseEstimator, TransformerMixin):
         c = np.float32(c)
         dataframe[col] = c
         
-    def powertransformer_log(dataframe,col,transformers):
+    def powertransformer_log(self,dataframe,col,transformers):
         c = dataframe[col].copy()
         c = np.log(c)
         c = np.float32(c)
