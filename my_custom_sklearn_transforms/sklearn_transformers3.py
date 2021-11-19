@@ -1,5 +1,6 @@
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.pipeline import Pipeline
+import numpy as np
 import pandas as pd
 
 class GetDummies(BaseEstimator, TransformerMixin):
